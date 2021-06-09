@@ -1,0 +1,4 @@
+[debug] [stratego-test] Classpath dependencies List()
+[debug] [stratego-test] Dependencies from configurations List(stratego)
+[debug] Bloop wrote the configuration of project 'stratego-test' to 'C:\Users\sivan\OneDrive\Dokumente\Studium\6_Semester\Stratego-SA_Scala3\.bloop\stratego-test.json'
+[success] Generated .bloop\stratego-test.json
