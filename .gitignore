@@ -1,7 +1,8 @@
 **/.bloop
 **/.bsp
 **/.metals
-**/project
+**/project/project/*
+**/project/target/*
 **/target/*
 *.class
 *.log
