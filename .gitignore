@@ -1,0 +1,10 @@
+**/.bloop
+**/.bsp
+**/.metals
+**/project/project/
+**/project/target/
+**/target/
+**/target/streams
+*.class
+*.log
+.jar
