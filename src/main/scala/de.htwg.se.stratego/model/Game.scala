@@ -1,9 +1,6 @@
 package de.htwg.se.stratego.model
-import de.htwg.se.stratego.model
-import de.htwg.se.stratego.model.{Game, MatchField, Player}
 
-
-case class Game(playerA: Player, playerB: Player, size: Int, var matchField: MatchField) {
+class Game(playerA: Player, playerB: Player, size: Int, var matchField: MatchField) :
   val bList = playerA.characterList
   val rList = playerB.characterList
 
@@ -38,10 +35,11 @@ case class Game(playerA: Player, playerB: Player, size: Int, var matchField: Mat
     matchField
   }
 
-  def characValue(charac:String): Int = {
-    if (charac.matches("[1-9]")) {
+  def characValue(charac: String): Int = {
+    if (charac.matches("[1-9]")) then
       return charac.toInt
-    }
+    end if
+    
     charac match {
       case "B" => 11
       case "M" => 10
@@ -49,27 +47,35 @@ case class Game(playerA: Player, playerB: Player, size: Int, var matchField: Mat
     }
   }
 
-  def isBlueField(row:Int): Boolean = {
+  def isBlueField(row: Int): Boolean = {
     matchField.fields.matrixSize match {
-      case 4 | 5 => if(row > 0) false else true
-      case 6 | 7 => if(row > 1) false else true
-      case 8 | 9 => if(row > 2) false else true
-      case 10    => if(row > 3) false else true
+      case 4 | 5 => (row > 0) ?? (false, true)
+      case 6 | 7 => (row > 1) ?? (false, true)
+      case 8 | 9 => (row > 2) ?? (false, true)
+      case 10    => (row > 3) ?? (false, true)
     }
   }
 
-  def isRedField(row:Int): Boolean = {
+  def isRedField(row: Int): Boolean = {
     matchField.fields.matrixSize match {
-      case 4 | 5 => if(row < 3) false else true
-      case 6 | 7 => if(row < 4) false else true
-      case 8 | 9 => if(row < 5) false else true
-      case 10    => if(row < 6) false else true
+      case 4 | 5 => (row < 3) ?? (false, true)
+      case 6 | 7 => (row < 4) ?? (false, true)
+      case 8 | 9 => (row < 5) ?? (false, true)
+      case 10    => (row < 6) ?? (false, true)
     }
   }
 
-  def setBlue(row:Int, col:Int, charac: String): MatchField = {
-    if (isBlueChar(charac) && isBlueField(row) && !matchField.fields.field(row,col).isSet) {
-      matchField = matchField.addChar(row,col,bList(bList.indexOf(GameCharacter(Figure.FigureVal(charac,characValue(charac))))))
+  def setBlue(row: Int, col: Int, charac: String): MatchField = {
+    if (isBlueChar(charac) && isBlueField(row) && !matchField.fields.field(row, col).isSet) {
+      matchField = matchField.addChar(row, col, bList(bList.indexOf(GameCharacter(Figure.FigureVal(charac ,characValue(charac))))))
+      return matchField
+    }
+    matchField
+  }
+
+  def setRed(row:Int, col:Int, charac: String): MatchField = {
+    if (isRedChar(charac) && isRedField(row) && !matchField.fields.field(row,col).isSet) {
+      matchField = matchField.addChar(row, col, rList(rList.indexOf(GameCharacter(Figure.FigureVal(charac, characValue(charac))))))
       return matchField
     }
     matchField
@@ -84,27 +90,20 @@ case class Game(playerA: Player, playerB: Player, size: Int, var matchField: Mat
     false
   }
 
+  def isRedChar(charac:String): Boolean = {
+    bList.map(gameCharacter => gameCharacter.figure.name.equals(charac) ?? (true, false))
+    false
+  }
+
   def set(player: Int, row:Int, col:Int, charac: String): MatchField = {
-    player match{
+    player match {
       case 1 => return setBlue(row, col, charac)
       case 2 => return setRed(row, col, charac)
     }
     matchField
   }
 
-  def setRed(row:Int, col:Int, charac: String): MatchField = {
-    if (isRedChar(charac) && isRedField(row) && !matchField.fields.field(row,col).isSet) {
-      matchField = matchField.addChar(row,col,rList(rList.indexOf(GameCharacter(Figure.FigureVal(charac,characValue(charac))))))
-      //bList.updated(idx, GameCharacter(Figure.FigureVal(charac,value)))
-      return matchField
-    }
-    matchField
-  }
-
-  def isRedChar(charac:String): Boolean = {
-    bList.map(GameCharacter => if(GameCharacter.figure.name.equals(charac)) return true else false)
-    false
-  }
+  
 
   def aChar(matchfield: MatchField, idx: Int, row: Int, col: Int): MatchField = matchfield.addChar(row, col, bList(idx))
 
@@ -285,5 +284,9 @@ case class Game(playerA: Player, playerB: Player, size: Int, var matchField: Mat
     }
     matchField
   }
-}
+
+
+implicit class Ternary[T](condition: Boolean) :
+  def ??(a: => T, b: => T): T = if (condition) a else b
+
 
