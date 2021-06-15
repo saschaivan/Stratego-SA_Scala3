@@ -1,7 +1,7 @@
 package de.htwg.se.stratego.model
 
 
-case class MatchField(fields: Matrix[Field]) {
+case class MatchField(fields: Matrix[Field]) :
 
   def this(rowSize: Int, colSize: Int, isSet: Boolean) = this(new Matrix[Field](rowSize, colSize, Field(isSet)))
 
@@ -57,4 +57,4 @@ case class MatchField(fields: Matrix[Field]) {
     matchField += legend()
     matchField
   }
-}
+

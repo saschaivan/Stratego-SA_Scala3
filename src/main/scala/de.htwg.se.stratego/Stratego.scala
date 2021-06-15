@@ -6,7 +6,7 @@ import de.htwg.se.stratego.model.MatchField
 
 import scala.io.StdIn.readLine
 
-@main def stratego = 
+@main def Stratego = 
   val controller = Controller(new MatchField(4, 4, false))
   val tui = new Tui(controller)
   controller.notifyObservers()

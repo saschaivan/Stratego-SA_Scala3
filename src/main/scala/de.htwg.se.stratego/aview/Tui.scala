@@ -3,8 +3,7 @@ package de.htwg.se.stratego.aview
 import de.htwg.se.stratego.util.Observer
 import de.htwg.se.stratego.controller.Controller
 
-class Tui(controller: Controller) extends Observer {
-
+class Tui(controller: Controller) extends Observer :
   controller.add(this)
   val size = 4
 
@@ -24,4 +23,4 @@ class Tui(controller: Controller) extends Observer {
     }
   }
   override def update(): Unit = println(controller.matchFieldToString)
-}
+

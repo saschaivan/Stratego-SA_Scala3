@@ -1,6 +1,7 @@
 package de.htwg.se.stratego.model
 
-class Game(playerA: Player, playerB: Player, size: Int, var matchField: MatchField) :
+
+class Game(playerA: Player, playerB: Player, size: Int, var matchField: MatchField) extends Tern[Boolean]:
   val bList = playerA.characterList
   val rList = playerB.characterList
 
@@ -24,14 +25,14 @@ class Game(playerA: Player, playerB: Player, size: Int, var matchField: MatchFie
     row = 0
     col = size - 1
     // shuffle(bList)
-    for (charac <- rList) {
-      if (row.equals(size)) {
+    for (charac <- rList) do
+      if (row.equals(size)) then
         col -= 1
         row = 0
-      }
+      end if
       matchField = matchField.addChar(col, row, charac)
       row += 1
-    }
+    
     matchField
   }
 
@@ -49,49 +50,45 @@ class Game(playerA: Player, playerB: Player, size: Int, var matchField: MatchFie
 
   def isBlueField(row: Int): Boolean = {
     matchField.fields.matrixSize match {
-      case 4 | 5 => (row > 0) ?? (false, true)
-      case 6 | 7 => (row > 1) ?? (false, true)
-      case 8 | 9 => (row > 2) ?? (false, true)
-      case 10    => (row > 3) ?? (false, true)
+      case 4 | 5 => compare((row > 0), false, true)
+      case 6 | 7 => compare((row > 1), false, true)
+      case 8 | 9 => compare((row > 2), false, true)
+      case 10    => compare((row > 3), false, true)
     }
   }
 
   def isRedField(row: Int): Boolean = {
     matchField.fields.matrixSize match {
-      case 4 | 5 => (row < 3) ?? (false, true)
-      case 6 | 7 => (row < 4) ?? (false, true)
-      case 8 | 9 => (row < 5) ?? (false, true)
-      case 10    => (row < 6) ?? (false, true)
+      case 4 | 5 => compare((row < 3), false, true)
+      case 6 | 7 => compare((row < 4), false, true)
+      case 8 | 9 => compare((row < 5), false, true)
+      case 10    => compare((row < 6), false, true)
     }
   }
 
   def setBlue(row: Int, col: Int, charac: String): MatchField = {
-    if (isBlueChar(charac) && isBlueField(row) && !matchField.fields.field(row, col).isSet) {
+    if (isBlueChar(charac) && isBlueField(row) && !matchField.fields.field(row, col).isSet) then
       matchField = matchField.addChar(row, col, bList(bList.indexOf(GameCharacter(Figure.FigureVal(charac ,characValue(charac))))))
       return matchField
-    }
+    end if
     matchField
   }
 
   def setRed(row:Int, col:Int, charac: String): MatchField = {
-    if (isRedChar(charac) && isRedField(row) && !matchField.fields.field(row,col).isSet) {
+    if (isRedChar(charac) && isRedField(row) && !matchField.fields.field(row,col).isSet) then
       matchField = matchField.addChar(row, col, rList(rList.indexOf(GameCharacter(Figure.FigureVal(charac, characValue(charac))))))
       return matchField
-    }
+    end if
     matchField
   }
 
   def isBlueChar(charac:String): Boolean = {
-    bList.foreach(GameCharacter =>
-      if(GameCharacter.toString().equals(charac)) {
-        return true
-      }
-    )
+    bList.map(gameCharacter => compare(gameCharacter.figure.name.equals(charac), return true, return false))
     false
   }
 
-  def isRedChar(charac:String): Boolean = {
-    bList.map(gameCharacter => gameCharacter.figure.name.equals(charac) ?? (true, false))
+  def isRedChar(charac: String): Boolean = {
+    rList.map(gameCharacter => compare(gameCharacter.figure.name.equals(charac), return true, return false))
     false
   }
 
@@ -102,8 +99,6 @@ class Game(playerA: Player, playerB: Player, size: Int, var matchField: MatchFie
     }
     matchField
   }
-
-  
 
   def aChar(matchfield: MatchField, idx: Int, row: Int, col: Int): MatchField = matchfield.addChar(row, col, bList(idx))
 
@@ -120,21 +115,21 @@ class Game(playerA: Player, playerB: Player, size: Int, var matchField: MatchFie
   }
 
   def moveDown(matchField: MatchField, row: Int, col: Int): MatchField = {
-    if (row == size - 1) {
+    if (row == size - 1) then
       println("The Figure can not set out of bounds!")
       return matchField
-    }
-    if (isFlagOrBomb(matchField, row,col)) {
+    end if
+    if (isFlagOrBomb(matchField, row,col)) then
       println("Flag and Bombs can't move!")
       return matchField
-    }
-    if (matchField.fields.field(row + 1, col).isSet.equals(false)) {
+    end if
+    if (matchField.fields.field(row + 1, col).isSet.equals(false)) then
       matchField.removeChar(row, col).addChar(row + 1, col, matchField.fields.field(row, col).character.get)
-    } else {
+    else 
       val f = matchField.fields.field(row + 1, col)
       println(s"Field (${row + 1},$col) is set with Figure $f!")
       matchField
-    }
+    end if
   }
 
   def moveUp(matchField: MatchField, row: Int, col: Int): MatchField = {
@@ -284,9 +279,17 @@ class Game(playerA: Player, playerB: Player, size: Int, var matchField: MatchFie
     }
     matchField
   }
+  override def compare(condition: Boolean, x: Boolean, y: Boolean): Boolean =
+      if (condition) x else y
+
+  
 
 
-implicit class Ternary[T](condition: Boolean) :
-  def ??(a: => T, b: => T): T = if (condition) a else b
+trait Tern[T]:
+  def compare(condition: Boolean, x: T, y: T): Boolean
+  given Ternary: Tern[Boolean] with
+    override def compare(condition: Boolean, x: Boolean, y: Boolean): Boolean =
+      if (condition) x else y
+
 
 

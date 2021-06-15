@@ -3,7 +3,7 @@ package de.htwg.se.stratego.controller
 import de.htwg.se.stratego.util.Observable
 import de.htwg.se.stratego.model.{CharacterList, Game, GameCharacter, MatchField, Player}
 
-class Controller(var matchField:MatchField) extends Observable {
+class Controller(var matchField:MatchField) extends Observable :
   val list = CharacterList(matchField.fields.matrixSize)
   val playerBlue = Player("PlayerBlue", list.getCharacterList())
   val playerRed = Player("PlayerRed", list.getCharacterList())
@@ -36,4 +36,4 @@ class Controller(var matchField:MatchField) extends Observable {
   }
 
   def matchFieldToString: String = matchField.toString
-}
+
