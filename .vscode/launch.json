@@ -9,7 +9,7 @@
             "name": "Debug de.htwg.se.stratego.Stratego",
             "request": "launch",
             "mainClass": "de.htwg.se.stratego.Stratego",
-            "args": [],
+            "args": []
         }
     ]
 }

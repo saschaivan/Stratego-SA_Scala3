@@ -82,7 +82,7 @@ class Game(playerA: Player, playerB: Player, size: Int, var matchField: MatchFie
     matchField
   }
 
-  def isBlueChar(charac:String): Boolean = {
+  def isBlueChar(charac: String): Boolean = {
     bList.map(gameCharacter => compare(gameCharacter.figure.name.equals(charac), return true, return false))
     false
   }

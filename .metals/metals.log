@@ -14573,3 +14573,77 @@ INFO: Unsupported notification method: $/setTrace
 [0m2021.06.15 17:59:30 INFO  q:   quit the programm[0m
 [0m2021.06.15 17:59:30 INFO  [0m
 [0m2021.06.15 18:00:41 INFO  Canceling debug proxy for [de.htwg.se.stratego.Stratego][0m
+Jun 15, 2021 6:01:13 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+[0m2021.06.15 18:01:16 INFO  Listening for transport dt_socket at address: 56197[0m
+[0m2021.06.15 18:01:16 INFO  tracing is disabled for protocol dap-server, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\sivan\AppData\Local\scalameta\metals\cache\dap-server.trace.json[0m
+[0m2021.06.15 18:01:16 INFO  tracing is disabled for protocol dap-client, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\sivan\AppData\Local\scalameta\metals\cache\dap-client.trace.json[0m
+[0m2021.06.15 18:01:17 INFO  Starting debug proxy for [de.htwg.se.stratego.Stratego][0m
+[0m2021.06.15 18:01:16 INFO  Trying to attach to remote debuggee VM kubernetes.docker.internal:56197 .[0m
+[0m2021.06.15 18:01:16 INFO  Attaching to debuggee VM succeeded.[0m
+[0m2021.06.15 18:01:16 INFO     0     1     2     3  [0m
+[0m2021.06.15 18:01:16 INFO  +-----+-----+-----+-----+[0m
+[0m2021.06.15 18:01:16 INFO  |     |     |     |     | 0[0m
+[0m2021.06.15 18:01:16 INFO  +-----+-----+-----+-----+[0m
+[0m2021.06.15 18:01:16 INFO  |     |     |     |     | 1[0m
+[0m2021.06.15 18:01:16 INFO  +-----+-----+-----+-----+[0m
+[0m2021.06.15 18:01:16 INFO  |     |     |     |     | 2[0m
+[0m2021.06.15 18:01:16 INFO  +-----+-----+-----+-----+[0m
+[0m2021.06.15 18:01:16 INFO  |     |     |     |     | 3[0m
+[0m2021.06.15 18:01:16 INFO  +-----+-----+-----+-----+[0m
+[0m2021.06.15 18:01:16 INFO  **********  WELCOME TO STRATEGO  **********[0m
+[0m2021.06.15 18:01:16 INFO  [0m
+[0m2021.06.15 18:01:16 INFO  n:   create a new empty machtfield[0m
+[0m2021.06.15 18:01:16 INFO  i:   set all character on the matchfield[0m
+[0m2021.06.15 18:01:16 INFO  u:   move one character up[0m
+[0m2021.06.15 18:01:16 INFO  d:   move one character down[0m
+[0m2021.06.15 18:01:16 INFO  r:   move one character to the right[0m
+[0m2021.06.15 18:01:16 INFO  l:   move one character to the left[0m
+[0m2021.06.15 18:01:16 INFO  a:   attack the character next to you[0m
+[0m2021.06.15 18:01:16 INFO  o:   player one can set his characters[0m
+[0m2021.06.15 18:01:16 INFO  t:   player two can set his characters[0m
+[0m2021.06.15 18:01:16 INFO  q:   quit the programm[0m
+[0m2021.06.15 18:01:16 INFO  [0m
+[0m2021.06.15 18:01:57 INFO  Canceling debug proxy for [de.htwg.se.stratego.Stratego][0m
+[0m2021.06.15 18:01:59 INFO  Listening for transport dt_socket at address: 56252[0m
+[0m2021.06.15 18:01:59 INFO  tracing is disabled for protocol dap-server, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\sivan\AppData\Local\scalameta\metals\cache\dap-server.trace.json[0m
+[0m2021.06.15 18:01:59 INFO  Listening for transport dt_socket at address: 56256[0m
+[0m2021.06.15 18:01:59 INFO  tracing is disabled for protocol dap-server, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\sivan\AppData\Local\scalameta\metals\cache\dap-server.trace.json[0m
+[0m2021.06.15 18:01:59 INFO  tracing is disabled for protocol dap-client, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\sivan\AppData\Local\scalameta\metals\cache\dap-client.trace.json[0m
+[0m2021.06.15 18:01:59 INFO  Starting debug proxy for [de.htwg.se.stratego.Stratego][0m
+[0m2021.06.15 18:01:59 INFO  Trying to attach to remote debuggee VM kubernetes.docker.internal:56256 .[0m
+[0m2021.06.15 18:01:59 INFO  Attaching to debuggee VM succeeded.[0m
+[0m2021.06.15 18:02:00 INFO     0     1     2     3  [0m
+[0m2021.06.15 18:02:00 INFO  +-----+-----+-----+-----+[0m
+[0m2021.06.15 18:02:00 INFO  |     |     |     |     | 0[0m
+[0m2021.06.15 18:02:00 INFO  +-----+-----+-----+-----+[0m
+[0m2021.06.15 18:02:00 INFO  |     |     |     |     | 1[0m
+[0m2021.06.15 18:02:00 INFO  +-----+-----+-----+-----+[0m
+[0m2021.06.15 18:02:00 INFO  |     |     |     |     | 2[0m
+[0m2021.06.15 18:02:00 INFO  +-----+-----+-----+-----+[0m
+[0m2021.06.15 18:02:00 INFO  |     |     |     |     | 3[0m
+[0m2021.06.15 18:02:00 INFO  +-----+-----+-----+-----+[0m
+[0m2021.06.15 18:02:00 INFO  **********  WELCOME TO STRATEGO  **********[0m
+[0m2021.06.15 18:02:00 INFO  [0m
+[0m2021.06.15 18:02:00 INFO  n:   create a new empty machtfield[0m
+[0m2021.06.15 18:02:00 INFO  i:   set all character on the matchfield[0m
+[0m2021.06.15 18:02:00 INFO  u:   move one character up[0m
+[0m2021.06.15 18:02:00 INFO  d:   move one character down[0m
+[0m2021.06.15 18:02:00 INFO  r:   move one character to the right[0m
+[0m2021.06.15 18:02:00 INFO  l:   move one character to the left[0m
+[0m2021.06.15 18:02:00 INFO  a:   attack the character next to you[0m
+[0m2021.06.15 18:02:00 INFO  o:   player one can set his characters[0m
+[0m2021.06.15 18:02:00 INFO  t:   player two can set his characters[0m
+[0m2021.06.15 18:02:00 INFO  q:   quit the programm[0m
+[0m2021.06.15 18:02:00 INFO  [0m
+[0m2021.06.15 18:02:20 INFO  Canceling debug proxy for [de.htwg.se.stratego.Stratego][0m
+Jun 15, 2021 6:02:25 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+[0m2021.06.15 18:05:21 INFO  shutting down Metals[0m
+[0m2021.06.15 18:05:21 INFO  Shut down connection with build server.[0m
+[0m2021.06.15 18:05:21No more data in the client stdin, exiting...
+ INFO  Shut down connection with build server.[0m
+No more data in the server stdin, exiting...
+No more data in the server stdin, exiting...
+No more data in the server stdin, exiting...
+No more data in the client stdin, exiting...
